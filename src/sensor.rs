@@ -1,9 +1,11 @@
+use std::sync::{Arc, Mutex};
+
 use axum::{async_trait, http::StatusCode, Json};
 use serde::{Deserialize, Serialize};
 // use async_trait::async_trait;
 use sqlx::FromRow;
 // use sqlx::sqlite::SqlitePool;
-use sqlx::sqlx_macros::expand_query;
+// use sqlx::sqlx_macros::expand_query;
 
 
 
@@ -73,5 +75,36 @@ pub struct NoteModel {
 #[allow(non_snake_case)]
 pub struct NoteModelResponse {
     pub id: i32,
-    pub name: String,}
+    pub name: String,
+}
+
+
+#[derive(Deserialize, Serialize)]
+pub struct Post_sensor {
+    pub id:i32,
+    pub name: String,
+}
+
+
+#[allow(non_snake_case)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
+pub struct Todo {
+    pub id: Option<String>,
+    pub name: String,
+}
+
+pub type DB = Arc<Mutex<Vec<Todo>>>;
+
+#[derive(Serialize, Debug)]
+pub struct TodoData {
+    pub todo: Todo,
+}
+
+#[derive(Serialize, Debug)]
+pub struct SingleTodoResponse {
+    pub status: String,
+    pub data: TodoData,
+}
+
+
 

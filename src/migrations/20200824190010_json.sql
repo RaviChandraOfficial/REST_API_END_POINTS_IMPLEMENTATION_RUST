@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS sensor_list
+(
+    id   BIGSERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL
+);
