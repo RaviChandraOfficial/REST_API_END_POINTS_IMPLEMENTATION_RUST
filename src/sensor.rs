@@ -1,51 +1,25 @@
 use std::sync::{Arc, Mutex};
-
-use axum::{async_trait, http::StatusCode, Json};
+use axum::{async_trait, extract::rejection::StringRejection, http::StatusCode, Json};
 use serde::{Deserialize, Serialize};
-// use async_trait::async_trait;
 use sqlx::FromRow;
-// use sqlx::sqlite::SqlitePool;
-// use sqlx::sqlx_macros::expand_query;
 
-
-
-#[derive(Debug, Clone,serde::Deserialize, serde::Serialize)]
-pub struct Sensor {
-    pub id: u32,
-    pub name: String,
-    pub location: String,
-    pub data: String,
-}
-
-#[derive(Debug, Clone,serde::Deserialize, serde::Serialize)]
-pub struct post_data{
-    pub id:u32,
-    pub name: String,
-
-}
-
-#[derive(Debug, Clone,serde::Deserialize, serde::Serialize)]
-pub struct get_data{
-    pub id:u32,
-    pub name: String,
-    pub location: String,
-    pub data: String,
-}
 
 
 // define a struct for the request body
 #[derive(Deserialize)]
 pub struct Request {
     pub id: i32,
-    pub name: String,
+    pub sensor_name: String,
+    pub data: String,
+    pub location: String,
 }
 
-// define a struct for the response body
-#[derive(Serialize)]
-pub struct Response {
-    pub id: i32,
-    pub name: String,
-}
+// // define a struct for the response body
+// #[derive(Serialize)]
+// pub struct Response {
+//     pub id: i32,
+//     pub name: String,
+// }
 
 
 // define a struct for the query parameters
@@ -54,12 +28,12 @@ pub struct Query {
     pub id: i32,
 }
 
-// define a struct for the database record
-#[derive(sqlx::FromRow, serde::Serialize)]
-pub struct Record {
-    pub id: i32,
-    pub name: String,
-}
+// // define a struct for the database record
+// #[derive(sqlx::FromRow, serde::Serialize)]
+// pub struct Record {
+//     pub id: i32,
+//     pub name: String,
+// }
 
 
 
@@ -67,7 +41,9 @@ pub struct Record {
 #[allow(non_snake_case)]
 pub struct NoteModel {
     pub id: i32,
-    pub name: String,
+    pub sensor_name: String,
+    pub location :String,
+    pub data :String,
 }
 
 
@@ -75,7 +51,9 @@ pub struct NoteModel {
 #[allow(non_snake_case)]
 pub struct NoteModelResponse {
     pub id: i32,
-    pub name: String,
+    pub sensor_name: String,
+    pub location: String,
+    pub data : String
 }
 
 
@@ -83,27 +61,3 @@ pub struct NoteModelResponse {
 pub struct get_id {
     pub id:i32
 }
-
-
-#[allow(non_snake_case)]
-#[derive(Debug, Deserialize, Serialize, Clone)]
-pub struct Todo {
-    pub id: Option<String>,
-    pub name: String,
-}
-
-pub type DB = Arc<Mutex<Vec<Todo>>>;
-
-#[derive(Serialize, Debug)]
-pub struct TodoData {
-    pub todo: Todo,
-}
-
-#[derive(Serialize, Debug)]
-pub struct SingleTodoResponse {
-    pub status: String,
-    pub data: TodoData,
-}
-
-
-
