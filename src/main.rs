@@ -6,7 +6,7 @@ use serde_json::Value;
 use my_rest_api::handler;
 use sqlx::postgres::{PgPool, PgPoolOptions};
 use tokio::net::TcpListener;
-// use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+
 use std::time::Duration;
 use axum::{extract, Json};
 use serde::Deserialize;
@@ -33,9 +33,10 @@ async fn main() {
 
     let app = Router::new()
     .route("/get/user", get(handler::get_data))
-    .route("/post/user", post(handler::post_user))
-    .route("/put/user", put(handler::put_user))
-    .route("/delete/user", delete(handler::delete_user)).with_state(pool);
+    .route("/get_id/user", get(handler::get_id_data))
+    .route("/post/user", post(handler::post_data))
+    .route("/put/user", put(handler::put_data))
+    .route("/delete/user", delete(handler::delete_data)).with_state(pool);
 
 //use redis // use sqllite 
     // run it with hyper

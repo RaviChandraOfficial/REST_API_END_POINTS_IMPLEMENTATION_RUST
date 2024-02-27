@@ -80,9 +80,8 @@ pub struct NoteModelResponse {
 
 
 #[derive(Deserialize, Serialize)]
-pub struct Post_sensor {
-    pub id:i32,
-    pub name: String,
+pub struct get_id {
+    pub id:i32
 }
 
 
