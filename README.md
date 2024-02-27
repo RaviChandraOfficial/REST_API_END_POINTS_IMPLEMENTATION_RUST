@@ -1,49 +1,11 @@
-#Project Title
+"SensorSync" is an advanced data management platform designed to seamlessly handle sensor data through robust API endpoints.
 
-Description
-Provide a brief description of your project here. Explain what your project does and its target audience. Mention the main features and technologies used, such as Axum for the web framework, SQLx for asynchronous database access, and any other notable Rust crates or technologies involved.
+This project comprises three key tasks:
 
-Prerequisites
-Before you begin, ensure you have met the following requirements:
+Implement API Endpoints Efficiently manage sensor data with a set of well-defined API endpoints. Retrieve data with flexible filtering, sorting, and pagination options using the GET method, submit new sensor data securely through the POST method, update specific readings through the PUT method, and ensure secure deletions with the DELETE method. The project utilizes SQLX and a PostgreSQL database for efficient storage and retrieval of sensor data.
 
-Rust Programming Language
-PostgreSQL Database
-Any other dependencies required to run your project
-Installation
-To install the necessary dependencies for this project, follow these steps:
+Add Authentication and Authorization Leveraging the power of AWS Cognito, this task involves implementing a secure user authentication system. Users can seamlessly log in, sign up, and log out, ensuring that only authorized individuals have access to sensitive sensor data.
 
-Rust and Cargo: Ensure you have Rust and Cargo installed. If not, you can install them from the official Rust website.
+Build REST API and Web Frontend with YEW.rs Create a comprehensive solution by developing a REST API to post and manage sensor data. Simultaneously, build a dynamic web interface using YEW.rs, providing users with an intuitive and responsive platform to interact with the sensor data. The native GUI for the application ensures a seamless experience, allowing users to fetch, save, update, and delete data through the backend REST API.
 
-PostgreSQL: Install PostgreSQL on your machine. Instructions can be found on the PostgreSQL official website.
-
-Database Setup: Create a new PostgreSQL database and user for this project.
-
-Environment Variables: Set up the required environment variables, including the database connection string.
-
-Dependencies: Run cargo build to download and compile the project dependencies.
-
-Configuration
-Explain how to configure the project, including setting up database connections, environment variables, and any other necessary configuration steps.
-
-Running the Application
-To run the application, follow these steps:
-
-Start your PostgreSQL database.
-Run cargo run to start the application.
-The application will be available at http://localhost:3000 .
-
-API Endpoints
-Document the available API endpoints, request methods, expected request payloads, and response formats. For example:
-
-GET /api/resource: Fetches a list of resources.
-POST /api/resource: Creates a new resource. Requires a JSON payload with name and description.
-Contributing
-If you would like to contribute to this project, please follow these steps:
-
-Fork the repository.
-Create a new branch (git checkout -b feature/YourFeature).
-Make your changes and commit them (git commit -am 'Add some feature').
-Push to the branch (git push origin feature/YourFeature).
-Create a new Pull Request.
-License
-Include information about your project's license here. If you haven't chosen a license yet, you can find more information on choosealicense.com.
+In summary, "SensorSync " not only streamlines the management of sensor data through powerful API functionalities but also ensures the security of the system through robust authentication and authorization mechanisms. The inclusion of a user-friendly web interface enhances the overall user experience, making it a versatile and comprehensive solution for sensor data management.
